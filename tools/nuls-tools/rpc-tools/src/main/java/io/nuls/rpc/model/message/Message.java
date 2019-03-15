@@ -24,7 +24,8 @@
  */
 package io.nuls.rpc.model.message;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.ToString;
 
 /**
@@ -35,32 +36,85 @@ import lombok.ToString;
  * @date 2018/11/15
  * @description
  */
-@Data
 @ToString
 public class Message {
 
     /**
      * 消息号 / Message ID
      */
+    @JsonProperty
     private String MessageId;
 
     /**
      * 消息发送时间 / Message sending time
      */
+    @JsonProperty
     private String Timestamp;
 
     /**
      * 消息发送时区 / Message sending timezone
      */
+    @JsonProperty
     private String Timezone;
 
     /**
      * 消息类型，共9种 / Message type, 9 types
      */
+    @JsonProperty
     private String MessageType;
 
     /**
      * 消息体，根据messageType有不同的结构
      */
+    @JsonProperty
     private Object MessageData;
+
+    @JsonIgnore
+    public String getMessageId() {
+        return MessageId;
+    }
+
+    @JsonIgnore
+    public void setMessageId(String messageId) {
+        MessageId = messageId;
+    }
+
+    @JsonIgnore
+    public String getTimestamp() {
+        return Timestamp;
+    }
+
+    @JsonIgnore
+    public void setTimestamp(String timestamp) {
+        Timestamp = timestamp;
+    }
+
+    @JsonIgnore
+    public String getTimezone() {
+        return Timezone;
+    }
+
+    public void setTimezone(String timezone) {
+        Timezone = timezone;
+    }
+
+    @JsonIgnore
+    public String getMessageType() {
+        return MessageType;
+    }
+
+    @JsonIgnore
+    public void setMessageType(String messageType) {
+        MessageType = messageType;
+    }
+
+    @JsonIgnore
+    public Object getMessageData() {
+        return MessageData;
+    }
+
+    @JsonIgnore
+    public void setMessageData(Object messageData) {
+        MessageData = messageData;
+    }
 }

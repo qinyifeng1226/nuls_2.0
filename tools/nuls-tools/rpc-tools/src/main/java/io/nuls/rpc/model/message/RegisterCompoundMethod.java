@@ -24,7 +24,9 @@
  */
 package io.nuls.rpc.model.message;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -35,21 +37,53 @@ import java.util.List;
  * @author tangyi
  * @date 2018/11/15
  */
-@Data
 @ToString
 public class RegisterCompoundMethod {
     /**
      * This is a string identifying the virtual method
      */
+    @JsonProperty
     private String CompoundMethodName;
 
     /**
      * A string describing the functionality of the method, the description will be available when querying the API for help
      */
+    @JsonProperty
     private String CompoundMethodDescription;
 
     /**
      * This is an array containing the methods with their respective parameter aliases that make up the virtual method
      */
+    @JsonProperty
     private List<Object> CompoundMethods;
+
+    @JsonIgnore
+    public String getCompoundMethodName() {
+        return CompoundMethodName;
+    }
+
+    @JsonIgnore
+    public void setCompoundMethodName(String compoundMethodName) {
+        CompoundMethodName = compoundMethodName;
+    }
+
+    @JsonIgnore
+    public String getCompoundMethodDescription() {
+        return CompoundMethodDescription;
+    }
+
+    @JsonIgnore
+    public void setCompoundMethodDescription(String compoundMethodDescription) {
+        CompoundMethodDescription = compoundMethodDescription;
+    }
+
+    @JsonIgnore
+    public List<Object> getCompoundMethods() {
+        return CompoundMethods;
+    }
+
+    @JsonIgnore
+    public void setCompoundMethods(List<Object> compoundMethods) {
+        CompoundMethods = compoundMethods;
+    }
 }

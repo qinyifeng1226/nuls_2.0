@@ -24,7 +24,9 @@
  */
 package io.nuls.rpc.model.message;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.ToString;
 
 /**
  * 取消订阅
@@ -38,12 +40,15 @@ public class Unsubscribe {
     /**
      * An array that holds all methods that the caller wants to unsubscribe
      */
+    @JsonProperty
     private String[] UnsubscribeMethods;
 
+    @JsonIgnore
     public String[] getUnsubscribeMethods() {
         return UnsubscribeMethods.clone();
     }
 
+    @JsonIgnore
     public void setUnsubscribeMethods(String[] unsubscribeMethods) {
         this.UnsubscribeMethods = unsubscribeMethods.clone();
     }

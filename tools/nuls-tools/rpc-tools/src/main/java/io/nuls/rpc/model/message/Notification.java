@@ -24,7 +24,8 @@
  */
 package io.nuls.rpc.model.message;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.ToString;
 
 /**
@@ -34,7 +35,6 @@ import lombok.ToString;
  * @author tangyi
  * @date 2018/11/15
  */
-@Data
 @ToString
 public class Notification {
     /**
@@ -42,20 +42,64 @@ public class Notification {
      * 0: The Micro server that made the notification does not expect any kind of message in return.
      * 1: The Micro server that made the notification expects exactly one Ack message.
      */
+    @JsonProperty
     private String NotificationAck;
 
     /**
      * The category of the notification, each service may define its own types so it is not required that the target service processes this field.
      */
+    @JsonProperty
     private String NotificationType;
 
     /**
      * A string comment that provides more information about the reason of the notification
      */
+    @JsonProperty
     private String NotificationComment;
 
     /**
      * Data relevant to the notification, it is not required the target service to process this field
      */
+    @JsonProperty
     private String NotificationData;
+
+    @JsonIgnore
+    public String getNotificationAck() {
+        return NotificationAck;
+    }
+
+    @JsonIgnore
+    public void setNotificationAck(String notificationAck) {
+        NotificationAck = notificationAck;
+    }
+
+    @JsonIgnore
+    public String getNotificationType() {
+        return NotificationType;
+    }
+
+    @JsonIgnore
+    public void setNotificationType(String notificationType) {
+        NotificationType = notificationType;
+    }
+
+    @JsonIgnore
+    public String getNotificationComment() {
+        return NotificationComment;
+    }
+
+    @JsonIgnore
+    public void setNotificationComment(String notificationComment) {
+        NotificationComment = notificationComment;
+    }
+
+    @JsonIgnore
+    public String getNotificationData() {
+        return NotificationData;
+    }
+
+    @JsonIgnore
+    public void setNotificationData(String notificationData) {
+        NotificationData = notificationData;
+    }
 }

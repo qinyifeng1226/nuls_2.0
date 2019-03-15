@@ -24,7 +24,8 @@
  */
 package io.nuls.rpc.model.message;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.ToString;
 
 /**
@@ -34,28 +35,71 @@ import lombok.ToString;
  * @author tangyi
  * @date 2018/11/15
  */
-@Data
 @ToString
 public class NegotiateConnection {
     /**
      * module abbreviation
      * */
+    @JsonProperty
     private String Abbreviation;
 
     /**
      * Protocol version
      */
+    @JsonProperty
     private String ProtocolVersion;
 
     /**
      * A String that represents the algorithm that will be used to receive and send messages if CompressionRate is greater than 0.
      * The default is zlib which a library is available in most development languages.
      */
+    @JsonProperty
     private String CompressionAlgorithm;
 
     /**
      * An integer between 0 and 9 that establishes the compression level in which the messages should be sent and received for this connection.
      * 0 means no compression while 9 maximum compression
      */
+    @JsonProperty
     private String CompressionRate;
+
+    @JsonIgnore
+    public String getAbbreviation() {
+        return Abbreviation;
+    }
+
+    @JsonIgnore
+    public void setAbbreviation(String abbreviation) {
+        Abbreviation = abbreviation;
+    }
+
+    @JsonIgnore
+    public String getProtocolVersion() {
+        return ProtocolVersion;
+    }
+
+    @JsonIgnore
+    public void setProtocolVersion(String protocolVersion) {
+        ProtocolVersion = protocolVersion;
+    }
+
+    @JsonIgnore
+    public String getCompressionAlgorithm() {
+        return CompressionAlgorithm;
+    }
+
+    @JsonIgnore
+    public void setCompressionAlgorithm(String compressionAlgorithm) {
+        CompressionAlgorithm = compressionAlgorithm;
+    }
+
+    @JsonIgnore
+    public String getCompressionRate() {
+        return CompressionRate;
+    }
+
+    @JsonIgnore
+    public void setCompressionRate(String compressionRate) {
+        CompressionRate = compressionRate;
+    }
 }

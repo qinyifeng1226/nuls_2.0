@@ -24,7 +24,8 @@
  */
 package io.nuls.rpc.model.message;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.ToString;
 
 /**
@@ -34,17 +35,49 @@ import lombok.ToString;
  * @author tangyi
  * @date 2018/11/15
  */
-@Data
 @ToString
 public class NegotiateConnectionResponse {
+    @JsonProperty
     private String RequestId;
     /**
      * An unsigned small integer value, 0 if negotiation was a failure and 1 if it was successful
      */
+    @JsonProperty
     private String NegotiationStatus;
 
     /**
      * A string value, useful to describe what exactly went wrong when the connection was rejected.
      */
+    @JsonProperty
     private String NegotiationComment;
+
+    @JsonIgnore
+    public String getRequestId() {
+        return RequestId;
+    }
+
+    @JsonIgnore
+    public void setRequestId(String requestId) {
+        RequestId = requestId;
+    }
+
+    @JsonIgnore
+    public String getNegotiationStatus() {
+        return NegotiationStatus;
+    }
+
+    @JsonIgnore
+    public void setNegotiationStatus(String negotiationStatus) {
+        NegotiationStatus = negotiationStatus;
+    }
+
+    @JsonIgnore
+    public String getNegotiationComment() {
+        return NegotiationComment;
+    }
+
+    @JsonIgnore
+    public void setNegotiationComment(String negotiationComment) {
+        NegotiationComment = negotiationComment;
+    }
 }

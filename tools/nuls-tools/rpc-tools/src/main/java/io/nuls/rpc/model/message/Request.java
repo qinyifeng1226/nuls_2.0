@@ -24,7 +24,8 @@
  */
 package io.nuls.rpc.model.message;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.ToString;
 
 import java.util.Map;
@@ -36,7 +37,6 @@ import java.util.Map;
  * @author tangyi
  * @date 2018/11/15
  */
-@Data
 @ToString
 public class Request {
     /**
@@ -44,6 +44,7 @@ public class Request {
      * 0: The Micro server that made the request expects only a Response message, if it subscribed to the function then it may expect many Response messages.
      * 1: The Micro server that made the request expects exactly one Ack message and also a Response message, if it subscribed to the function then it may expect many Response messages.
      */
+    @JsonProperty
     private String RequestAck;
 
     /**
@@ -52,6 +53,7 @@ public class Request {
      * For example, if the requested method is GetHeight and this parameter is set to 5 then the service will send back responses only after 5 blocks have been processed.
      * 0 means the method should send a Response only once; this is the default value.
      */
+    @JsonProperty
     private String SubscriptionEventCounter;
 
     /**
@@ -60,6 +62,7 @@ public class Request {
      * For example, if the requested method is GetHeight and this parameter is set to 5 then the service will send back responses only after 5 seconds have passed.
      * 0 means the method should send a Response only once; this is the default value.
      */
+    @JsonProperty
     private String SubscriptionPeriod;
 
     /**
@@ -71,15 +74,78 @@ public class Request {
      * Example: Assume we only want to be notified only when the balance is equal or greater to 1000.
      * Then the getbalance request should be sent with "[1000, )" string as SubscriptionRange parameter.
      */
+    @JsonProperty
     private String SubscriptionRange;
 
     /**
      * An unsigned integer which specifies the maximum number of objects that the method should return, a value of zero (the default) means no limit
      */
+    @JsonProperty
     private String ResponseMaxSize;
 
     /**
      * An map that holds all methods being requested with their respective parameters
      */
+    @JsonProperty
     private Map<String, Object> RequestMethods;
+
+    @JsonIgnore
+    public String getRequestAck() {
+        return RequestAck;
+    }
+
+    @JsonIgnore
+    public void setRequestAck(String requestAck) {
+        RequestAck = requestAck;
+    }
+
+    @JsonIgnore
+    public String getSubscriptionEventCounter() {
+        return SubscriptionEventCounter;
+    }
+
+    @JsonIgnore
+    public void setSubscriptionEventCounter(String subscriptionEventCounter) {
+        SubscriptionEventCounter = subscriptionEventCounter;
+    }
+
+    @JsonIgnore
+    public String getSubscriptionPeriod() {
+        return SubscriptionPeriod;
+    }
+
+    @JsonIgnore
+    public void setSubscriptionPeriod(String subscriptionPeriod) {
+        SubscriptionPeriod = subscriptionPeriod;
+    }
+
+    @JsonIgnore
+    public String getSubscriptionRange() {
+        return SubscriptionRange;
+    }
+
+    @JsonIgnore
+    public void setSubscriptionRange(String subscriptionRange) {
+        SubscriptionRange = subscriptionRange;
+    }
+
+    @JsonIgnore
+    public String getResponseMaxSize() {
+        return ResponseMaxSize;
+    }
+
+    @JsonIgnore
+    public void setResponseMaxSize(String responseMaxSize) {
+        ResponseMaxSize = responseMaxSize;
+    }
+
+    @JsonIgnore
+    public Map<String, Object> getRequestMethods() {
+        return RequestMethods;
+    }
+
+    @JsonIgnore
+    public void setRequestMethods(Map<String, Object> requestMethods) {
+        RequestMethods = requestMethods;
+    }
 }
