@@ -42,32 +42,32 @@ public class Response {
     /**
      * This is the original request ID referred by a Request message
      */
-    private String requestId;
+    private String RequestId;
 
     /**
      * The time that the target service took to process the request in milliseconds.
      */
-    private String responseProcessingTime;
+    private String ResponseProcessingTime;
 
     /**
      * The response status, 1 if successful, 0 otherwise.
      */
-    private String responseStatus;
+    private String ResponseStatus;
 
     /**
      * A string that could offer more clarification about the result of the process.
      */
-    private String responseComment;
+    private String ResponseComment;
 
     /**
      * The maximum number of objects that the response contains per request.
      */
-    private String responseMaxSize;
+    private String ResponseMaxSize;
 
     /**
      * An object array that contains the result of the method processed, one object per request
      */
-    private Object responseData;
+    private Object ResponseData;
 
     /**
      * 回复是否正确 / Whether the response is correct
@@ -75,6 +75,6 @@ public class Response {
      */
     @JsonIgnore
     public boolean isSuccess() {
-        return Constants.BOOLEAN_TRUE.equals(responseStatus);
+        return Constants.BOOLEAN_TRUE.equals(ResponseStatus);
     }
 }

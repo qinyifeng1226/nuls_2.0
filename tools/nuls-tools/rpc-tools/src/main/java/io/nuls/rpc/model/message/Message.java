@@ -42,25 +42,25 @@ public class Message {
     /**
      * 消息号 / Message ID
      */
-    private String messageId;
+    private String MessageId;
 
     /**
      * 消息发送时间 / Message sending time
      */
-    private String timestamp;
+    private String Timestamp;
 
     /**
      * 消息发送时区 / Message sending timezone
      */
-    private String timezone;
+    private String Timezone;
 
     /**
      * 消息类型，共9种 / Message type, 9 types
      */
-    private String messageType;
+    private String MessageType;
 
     /**
      * 消息体，根据messageType有不同的结构
      */
-    private Object messageData;
+    private Object MessageData;
 }

@@ -40,22 +40,22 @@ public class NegotiateConnection {
     /**
      * module abbreviation
      * */
-    private String abbreviation;
+    private String Abbreviation;
 
     /**
      * Protocol version
      */
-    private String protocolVersion;
+    private String ProtocolVersion;
 
     /**
      * A String that represents the algorithm that will be used to receive and send messages if CompressionRate is greater than 0.
      * The default is zlib which a library is available in most development languages.
      */
-    private String compressionAlgorithm;
+    private String CompressionAlgorithm;
 
     /**
      * An integer between 0 and 9 that establishes the compression level in which the messages should be sent and received for this connection.
      * 0 means no compression while 9 maximum compression
      */
-    private String compressionRate;
+    private String CompressionRate;
 }

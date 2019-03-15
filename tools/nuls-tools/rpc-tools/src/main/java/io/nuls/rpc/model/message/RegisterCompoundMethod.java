@@ -41,15 +41,15 @@ public class RegisterCompoundMethod {
     /**
      * This is a string identifying the virtual method
      */
-    private String compoundMethodName;
+    private String CompoundMethodName;
 
     /**
      * A string describing the functionality of the method, the description will be available when querying the API for help
      */
-    private String compoundMethodDescription;
+    private String CompoundMethodDescription;
 
     /**
      * This is an array containing the methods with their respective parameter aliases that make up the virtual method
      */
-    private List<Object> compoundMethods;
+    private List<Object> CompoundMethods;
 }

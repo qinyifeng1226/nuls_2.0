@@ -42,20 +42,20 @@ public class Notification {
      * 0: The Micro server that made the notification does not expect any kind of message in return.
      * 1: The Micro server that made the notification expects exactly one Ack message.
      */
-    private String notificationAck;
+    private String NotificationAck;
 
     /**
      * The category of the notification, each service may define its own types so it is not required that the target service processes this field.
      */
-    private String notificationType;
+    private String NotificationType;
 
     /**
      * A string comment that provides more information about the reason of the notification
      */
-    private String notificationComment;
+    private String NotificationComment;
 
     /**
      * Data relevant to the notification, it is not required the target service to process this field
      */
-    private String notificationData;
+    private String NotificationData;
 }
