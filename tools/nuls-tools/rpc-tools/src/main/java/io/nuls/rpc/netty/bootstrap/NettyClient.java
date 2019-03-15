@@ -78,6 +78,7 @@ public class NettyClient {
             Message message = MessageUtil.basicMessage(MessageType.NegotiateConnection);
             message.setMessageData(MessageUtil.defaultNegotiateConnection());
             String negotiateConnection = JSONUtils.obj2json(message);
+            Log.debug("Negotiate: {}",negotiateConnection);
             channel.writeAndFlush(new TextWebSocketFrame(negotiateConnection));
             return channel;
         }catch (Exception e){
