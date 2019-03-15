@@ -41,6 +41,8 @@ import java.util.Map;
  */
 public class MessageUtil {
 
+    static final String PROTOCOL_VERSION = "0.1";
+
     /**
      * 默认Message对象
      * Default Message object
@@ -67,7 +69,7 @@ public class MessageUtil {
     public static NegotiateConnection defaultNegotiateConnection() {
         NegotiateConnection negotiateConnection = new NegotiateConnection();
         negotiateConnection.setAbbreviation(ConnectManager.LOCAL.getModuleAbbreviation());
-        negotiateConnection.setProtocolVersion("1.0");
+        negotiateConnection.setProtocolVersion(PROTOCOL_VERSION);
         negotiateConnection.setCompressionAlgorithm("zlib");
         negotiateConnection.setCompressionRate("0");
         return negotiateConnection;

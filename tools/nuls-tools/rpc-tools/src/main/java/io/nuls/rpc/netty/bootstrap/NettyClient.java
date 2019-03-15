@@ -77,7 +77,8 @@ public class NettyClient {
             //netty握手成功之后，发送业务握手信息
             Message message = MessageUtil.basicMessage(MessageType.NegotiateConnection);
             message.setMessageData(MessageUtil.defaultNegotiateConnection());
-            channel.writeAndFlush(new TextWebSocketFrame(JSONUtils.obj2json(message)));
+            String negotiateConnection = JSONUtils.obj2json(message);
+            channel.writeAndFlush(new TextWebSocketFrame(negotiateConnection));
             return channel;
         }catch (Exception e){
             e.printStackTrace();
