@@ -46,7 +46,7 @@ import java.util.Map;
 public class KernelCmd4Test extends BaseCmd {
 
 
-    @CmdAnnotation(cmd = "registerAPI", version = 1.0, minEvent = 1,
+    @CmdAnnotation(cmd = "RegisterAPI", version = 1.0, minEvent = 1,
             description = "Register API")
     public Response registerAPI(Map<String, Object> map) {
         try {

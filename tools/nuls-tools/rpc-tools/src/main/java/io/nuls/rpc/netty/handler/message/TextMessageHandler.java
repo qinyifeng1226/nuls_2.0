@@ -68,7 +68,7 @@ public class TextMessageHandler implements Runnable {
 
 
             Message message = JSONUtils.json2pojo(msg, Message.class);
-
+            Log.debug("receive msg:{}",msg);
             /*
              * 获取该链接对应的ConnectData对象
              * Get the ConnectData object corresponding to the link
@@ -134,7 +134,7 @@ public class TextMessageHandler implements Runnable {
 //                    NegotiateConnectionResponse nres = JSONUtils.map2pojo((Map) message.getMessageData(), NegotiateConnectionResponse.class);
 //                    ResponseContainer resContainer = RequestContainer.getResponseContainer(nres.getRequestId());
 
-                    ResponseContainer resContainer = RequestContainer.getResponseContainer(((Map<String, String>) message.getMessageData()).get("requestId"));
+                    ResponseContainer resContainer = RequestContainer.getResponseContainer(((Map<String, String>) message.getMessageData()).get("RequestId"));
 
                     if (resContainer != null && resContainer.getFuture() != null) {
                         resContainer.getFuture().complete(new Response());

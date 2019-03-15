@@ -26,6 +26,7 @@
 package io.nuls.rpc.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -43,24 +44,24 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 public class CmdDetail {
-    @Getter
-    @Setter
+    @JsonProperty("MethodName")
     private String methodName;
-    @Getter
-    @Setter
+
+    @JsonProperty("MethodDescription")
     private String methodDescription;
-    @Getter
-    @Setter
+
+    @JsonProperty("MethodMinEvent")
     private String methodMinEvent;
-    @Getter
-    @Setter
+
+    @JsonProperty("MethodMinPeriod")
     private String methodMinPeriod;
-    @Getter
-    @Setter
+
+    @JsonProperty("MethodScope")
     private String methodScope;
-    @Getter
-    @Setter
+
+    @JsonProperty("Parameters")
     private List<CmdParameter> parameters;
+
     @Getter
     @Setter
     @JsonIgnore
@@ -73,4 +74,53 @@ public class CmdDetail {
     @Setter
     @JsonIgnore
     private String invokeMethod;
+
+    @JsonIgnore
+    public String getMethodDescription() {
+        return methodDescription;
+    }
+    @JsonIgnore
+    public void setMethodDescription(String methodDescription) {
+        this.methodDescription = methodDescription;
+    }
+    @JsonIgnore
+    public String getMethodMinEvent() {
+        return methodMinEvent;
+    }
+    @JsonIgnore
+    public void setMethodMinEvent(String methodMinEvent) {
+        this.methodMinEvent = methodMinEvent;
+    }
+    @JsonIgnore
+    public String getMethodMinPeriod() {
+        return methodMinPeriod;
+    }
+    @JsonIgnore
+    public void setMethodMinPeriod(String methodMinPeriod) {
+        this.methodMinPeriod = methodMinPeriod;
+    }
+    @JsonIgnore
+    public String getMethodScope() {
+        return methodScope;
+    }
+    @JsonIgnore
+    public void setMethodScope(String methodScope) {
+        this.methodScope = methodScope;
+    }
+    @JsonIgnore
+    public List<CmdParameter> getParameters() {
+        return parameters;
+    }
+    @JsonIgnore
+    public void setParameters(List<CmdParameter> parameters) {
+        this.parameters = parameters;
+    }
+    @JsonIgnore
+    public String getMethodName() {
+        return methodName;
+    }
+    @JsonIgnore
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
+    }
 }
