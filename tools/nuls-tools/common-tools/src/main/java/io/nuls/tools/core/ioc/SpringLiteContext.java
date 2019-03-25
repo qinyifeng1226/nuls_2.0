@@ -492,7 +492,8 @@ public class SpringLiteContext {
             return Order.DEFALUT_ORDER;
         }
         Optional<Annotation> ann = anns.stream().filter(a -> a.annotationType().equals(Order.class)).findFirst();
-        if (ann.isEmpty()) {
+        if (!ann.isPresent()) {
+
             return Order.DEFALUT_ORDER;
         }
         return ((Order) ann.get()).value();

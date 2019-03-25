@@ -64,4 +64,15 @@ public class AccountToolTest {
         boolean result = AddressTool.validAddress(2, address);
         assertTrue(result);
     }
+
+
+    @Test
+    public void test() {
+        boolean result = AddressTool.validNormalAddress(AddressTool.getAddress("tNULSeBaMnrs6JKrCy6TQdzYJZkMZJDng7QAsD"), 2);
+        assertTrue(result);
+
+        result = AddressTool.validContractAddress(AddressTool.getAddress("tNULSeBaMnrs6JKrCy6TQdzYJZkMZJDng7QAsD"), 2);
+        assertTrue(!result);
+    }
+
 }

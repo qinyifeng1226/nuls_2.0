@@ -78,7 +78,7 @@ public class ConfigurationLoader {
         int maxKeyLength = configData.keySet().stream().max((d1,d2)->d1.length() > d2.length() ? 1 : -1).get().length();
         configData.entrySet().forEach(entry->{
             StringBuilder space = new StringBuilder();
-            for(var i = 0;i<maxKeyLength - entry.getKey().length();i++){
+            for(int i = 0;i<maxKeyLength - entry.getKey().length();i++){
                 space.append(" ");
             }
             Log.info("{} : {} ==> {}",entry.getKey() + space,entry.getValue().value,entry.getValue().configFile);
