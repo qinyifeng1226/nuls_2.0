@@ -37,6 +37,7 @@ import io.nuls.rpc.info.Constants;
 import io.nuls.rpc.model.message.MessageUtil;
 import io.nuls.rpc.model.message.Request;
 import io.nuls.rpc.netty.processor.ResponseMessageProcessor;
+import io.nuls.rpc.netty.processor.container.RequestContainer;
 import io.nuls.rpc.netty.processor.container.ResponseContainer;
 import io.nuls.tools.crypto.HexUtil;
 
@@ -94,14 +95,20 @@ public class OtherModuleMessageHandler extends BaseMessageHandler {
         } else {
             LoggerUtil.logger(chainId).debug("==============================other module message protocolRoleHandlers-size:{}", protocolRoleHandlers.size());
             for (ProtocolRoleHandler protocolRoleHandler : protocolRoleHandlers) {
+                String messageId = null;
                 try {
                     LoggerUtil.logger(chainId).debug("request：{}=={}", protocolRoleHandler.getRole(), protocolRoleHandler.getHandler());
-                    Request request = MessageUtil.newRequest( protocolRoleHandler.getHandler(), paramMap, Constants.BOOLEAN_FALSE, Constants.ZERO, Constants.ZERO);
-                    ResponseContainer responseContainer =ResponseMessageProcessor.sendRequest(protocolRoleHandler.getRole(), request);
-                    LoggerUtil.logger(chainId).debug("responseContainer：" + responseContainer.getMessageId());
+                    Request request = MessageUtil.newRequest(protocolRoleHandler.getHandler(), paramMap, Constants.BOOLEAN_FALSE, Constants.ZERO, Constants.ZERO);
+                    ResponseContainer responseContainer = ResponseMessageProcessor.sendRequest(protocolRoleHandler.getRole(), request);
+                    messageId = responseContainer.getMessageId();
+                    LoggerUtil.logger(chainId).debug("responseContainer：{}", messageId);
                     LoggerUtil.modulesMsgLogs(protocolRoleHandler.getRole(), header.getCommandStr(), node, payLoadBody, responseContainer.getMessageId());
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    LoggerUtil.logger(chainId).error(e);
+                } finally {
+                    if (null != messageId) {
+                        RequestContainer.removeResponseContainer(messageId);
+                    }
                 }
             }
         }
