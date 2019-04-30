@@ -135,6 +135,7 @@ public class ResponseMessageProcessor {
         Get the returned entity and place it in the local variable
          */
         Response response = receiveResponse(responseContainer, Constants.TIMEOUT_TIMEMILLIS);
+
         /*
         注册消息发送失败，重新发送
         */

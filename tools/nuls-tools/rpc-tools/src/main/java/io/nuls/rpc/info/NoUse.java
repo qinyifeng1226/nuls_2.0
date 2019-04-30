@@ -56,8 +56,8 @@ public class NoUse {
                 .moduleRoles("test_role", new String[]{"1.0"})
                 .moduleVersion("1.0");
 
-        ConnectManager.getConnectByUrl("ws://" + HostInfo.getLocalIP() + ":8887/ws");
+        ConnectManager.getConnectByUrl("ws://192.168.1.135:8887/ws");
         // Get information from kernel
-        ResponseMessageProcessor.syncKernel("ws://" + HostInfo.getLocalIP() + ":8887/ws");
+        ResponseMessageProcessor.syncKernel("ws://192.168.1.135:8887/ws");
     }
 }
